@@ -1,0 +1,45 @@
+@model List<careerPortal.Models.UsaJob>
+
+@{
+    ViewData["Title"] = "Saved Applications";
+}
+
+<h2>Saved Applications</h2>
+
+@if (!Model.Any())
+{
+    <div>No saved applications found.</div>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Position Title</th>
+                <th>Organization</th>
+                <th>Location</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var job in Model)
+            {
+                <tr>
+                    <td>@job.PositionTitle</td>
+                    <td>@job.OrganizationName</td>
+                    <td>@job.Location</td>
+                    <td>@job.Status</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-positionId="@job.PositionId" class="btn btn-sm btn-warning">Edit</a>
+                        <a asp-action="Delete" asp-route-positionId="@job.PositionId" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+
+}
+}

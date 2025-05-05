@@ -6,4 +6,22 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Remove="Views\Home\create.cshtml" />
+    <Content Remove="Views\Home\delete.cshtml" />
+    <Content Remove="Views\Home\login.cshtml" />
+    <Content Remove="Views\Home\read.cshtml" />
+    <Content Remove="Views\Home\update.cshtml" />
+    <Content Remove="Views\Home\Visualizations.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Applications\Create.cshtml" />
+    <None Include="Views\Applications\Delete.cshtml" />
+    <None Include="Views\Account\Login.cshtml" />
+    <None Include="Views\Applications\Read.cshtml" />
+    <None Include="Views\Applications\Edit.cshtml" />
+    <None Include="Views\Data\Visualizations.cshtml" />
+  </ItemGroup>
+
 </Project>

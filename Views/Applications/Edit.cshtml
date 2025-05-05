@@ -1,0 +1,64 @@
+@model careerPortal.Models.UsaJob
+
+@{
+    ViewData["Title"] = "Edit Application";
+    Layout = "_Layout";
+}
+
+<main class="container">
+    <div class="card">
+        <h2>Edit Application</h2>
+
+        <form asp-action="Edit" method="post">
+            <input type="hidden" asp-for="PositionId" />
+
+            <div class="form-group">
+                <label asp-for="OrganizationName" class="form-label"></label>
+                <input asp-for="OrganizationName" class="form-input" />
+                <span asp-validation-for="OrganizationName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="PositionTitle" class="form-label"></label>
+                <input asp-for="PositionTitle" class="form-input" />
+                <span asp-validation-for="PositionTitle" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Location" class="form-label"></label>
+                <input asp-for="Location" class="form-input" />
+                <span asp-validation-for="Location" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Status" class="form-label"></label>
+                <select asp-for="Status" class="form-input">
+                    <option>Planning to apply</option>
+                    <option>Applied</option>
+                    <option>Interview scheduled</option>
+                    <option>Offer received</option>
+                    <option>Rejected</option>
+                </select>
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="SalaryRange" class="form-label"></label>
+                <input asp-for="SalaryRange" class="form-input" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="PositionUri" class="form-label"></label>
+                <input asp-for="PositionUri" class="form-input" />
+                <span asp-validation-for="PositionUri" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn">Update Application</button>
+        </form>
+    </div>
+</main>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+   
+}
