@@ -1,0 +1,74 @@
+﻿@{
+    ViewData["Title"] = "About Us - CareerTrack Portal";
+    Layout = "_Layout";
+}
+
+<main class="container">
+    <div class="card">
+        <h2>About Our Project</h2>
+        <p>The CareerTrack Portal is designed to help university students manage their career search process efficiently. Our platform provides comprehensive tools for tracking applications, analyzing progress, and improving job search strategies.</p>
+
+        <div class="data-model">
+            <h3>System Data Model</h3>
+            <div class="erd">
+                <img src="~/images/DataModel.png" alt="ER Diagram Placeholder" class="erd-image">
+            </div>
+            <p>The diagram above shows the one-to-many relationships between students and their applications, as well as between applications and interview records.</p>
+        </div>
+    </div>
+
+    <div class="team-section">
+        <h2>Our Team</h2>
+        <div class="team-grid">
+            <!-- Team Member 1 -->
+            <div class="team-card">
+                <img src="~/images/Arun.jpg" alt="Arun Vijayakumar" class="team-photo">
+                <h3>Arun Vijayakumar</h3>
+                <p class="email">arunv@usf.edu</p>
+                <p class="course">MS in AIBA</p>
+                <p>Arun is the backend developer who led the core development of the CareerTrack Portal. He integrated the USAJobs API, implemented the job browsing functionality, and designed the singleton service layer for managing data across sessions. Arun also managed the GitHub repository and oversaw the overall system architecture.</p>
+            </div>
+
+            <!-- Team Member 2 -->
+            <div class="team-card">
+                <img src="~/images/Bhavani.jpeg" alt="Bhavani Dande" class="team-photo">
+                <h3>Bhavani Dande</h3>
+                <p class="email">bhavanidande@usf.edu</p>
+                <p class="course">MS in AIBA</p>
+                <p>
+                    Bhavani focused on layout design and UI enhancements. She implemented the responsive navigation menu, improved styling on shared views like Login and About, and helped ensure that the portal works well across devices. Her contributions improved both usability and aesthetics.
+                </p>
+            </div>
+
+            <!-- Team Member 3 -->
+            <div class="team-card">
+                <img src="~/images/Saanvi.jpeg" alt="Saanvi Reddy" class="team-photo">
+                <h3>Saanvi Reddy Baradi</h3>
+                <p class="email">saanvireddybaradi@usf.edu</p>
+                <p class="course">MS in AIBA</p>
+                <p>Saanvi handled the data visualization component of the portal. She created interactive charts that reflect both user-submitted and API-fetched data using javascript. Her attention to UI responsiveness and layout refinement enhanced the user experience on the Progress Tracker page.</p>
+            </div>
+
+            <!-- Team Member 4 -->
+            <div class="team-card">
+                <img src="~/images/Yamuna.jpeg" alt="Yamuna Yogananda Shobha" class="team-photo">
+                <h3>Yamuna Yogananda Shobha</h3>
+                <p class="email">yamunay@usf.edu</p>
+                <p class="course">MS in AIBA</p>
+                <p>Yamuna contributed as the CRUD operations specialist. She built the application submission module, developed the Create, Read, Update, and Delete workflows, and ensured smooth routing between views and controllers. Her work played a key role in managing application data effectively.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="card github-section">
+        <h2>Project Repository</h2>
+        <p>Explore our codebase and contribution history on GitHub</p>
+        <a href="https://github.com/arunvj2517/student-careertrack-portal" class="btn github-btn" target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.167 6.839 9.49.5.09.682-.217.682-.48 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.577.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z" />
+            </svg>
+            View on GitHub
+        </a>
+    </div>
+</main>
+
