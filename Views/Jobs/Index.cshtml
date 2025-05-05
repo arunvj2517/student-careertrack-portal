@@ -1,0 +1,81 @@
+﻿@model List<careerPortal.Models.UsaJob>
+
+@{
+    ViewData["Title"] = "Browse Jobs from USAJobs";
+    Layout = "_Layout";
+}
+
+<main class="container">
+    <h2>Browse Jobs from USAJobs</h2>
+
+    <form method="get" asp-action="Index" class="search-form" style="margin-bottom: 20px;">
+        <label for="keyword">Search Jobs by Keyword:</label>
+        <input type="text" id="keyword" name="keyword" placeholder="e.g. Data Scientist" value="@Context.Request.Query["keyword"]" />
+        <button type="submit" class="btn">Search</button>
+    </form>
+
+    @if (ViewBag.Error != null)
+    {
+        <p class="error">@ViewBag.Error</p>
+    }
+    else if (Model.Count == 0)
+    {
+        <p>No jobs found.</p>
+    }
+    else
+    {
+        <div class="job-list">
+            @foreach (var job in Model)
+            {
+                <div class="job-card">
+                    <h4>@job.PositionTitle</h4>
+                    <p><strong>Agency:</strong> @job.OrganizationName</p>
+                    <p><strong>Location:</strong> @job.Location</p>
+                    
+                    <a href="@job.PositionUri" target="_blank" class="btn">View Job</a>
+                </div>
+            }
+        </div>
+    }
+</main>
+
+<style>
+    .search-form {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+
+        .search-form input {
+            padding: 6px;
+            width: 250px;
+        }
+
+    .job-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .job-card {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 16px;
+        width: 300px;
+        background-color: #f9f9f9;
+    }
+
+        .job-card h4 {
+            margin-top: 0;
+        }
+
+        .job-card .btn {
+            margin-top: 10px;
+            display: inline-block;
+        }
+
+    .error {
+        color: red;
+        font-weight: bold;
+    }
+</style>
