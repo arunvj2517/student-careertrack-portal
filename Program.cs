@@ -1,36 +1,58 @@
-namespace projectTemplate
+using careerPortal.Models;
+using careerPortal.Services;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+builder.Services.AddControllersWithViews();
+
+// Add HttpClient for API calls
+builder.Services.AddHttpClient("UsaJobs", client =>
 {
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
-            var builder = WebApplication.CreateBuilder(args);
+    client.BaseAddress = new Uri("https://data.usajobs.gov/");
+   // client.DefaultRequestHeaders.Add("User-Agent", builder.Configuration["UsaJobs:UserAgent"]);
+    client.DefaultRequestHeaders.Add("Authorization-Key", builder.Configuration["UsaJobs:ApiKey"]);
+   // client.DefaultRequestHeaders.Add("Host", "data.usajobs.gov");
+});
 
-            // Add services to the container.
-            builder.Services.AddControllersWithViews();
+// If using Entity Framework (uncomment if needed)
+// builder.Services.AddDbContext<JobDbContext>(options =>
+//     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-            var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
-            if (!app.Environment.IsDevelopment())
-            {
-                app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
-            }
+// Add this to your services
+builder.Services.AddSingleton<IJobManagerService, JobManagerService>();
 
-            app.UseHttpsRedirection();
-            app.UseStaticFiles();
+builder.Services.AddSingleton<JobService>();
 
-            app.UseRouting();
+// Configure session state (if needed for login)
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
 
-            app.UseAuthorization();
+var app = builder.Build();
 
-            app.MapControllerRoute(
-                name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
-
-            app.Run();
-        }
-    }
+// Configure the HTTP request pipeline.
+if (!app.Environment.IsDevelopment())
+{
+    app.UseExceptionHandler("/Home/Error");
+    app.UseHsts();
 }
+
+app.UseHttpsRedirection();
+app.UseStaticFiles();
+app.UseRouting();
+
+// Enable session (if added above)
+app.UseSession();
+
+app.UseAuthorization();
+
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.Run();
