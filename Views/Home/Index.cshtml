@@ -1,8 +1,122 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "CareerTrack Portal";
+    Layout = "_Layout";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container hero-container">
+        <div class="hero-content">
+            <h2>Take Control of Your <span class="highlight">Career Journey</span></h2>
+            <p class="hero-text">Our comprehensive platform empowers students to:</p>
+            <ul class="feature-list">
+                <li>Track every job application in one place</li>
+                <li>Visualize your progress with interactive dashboards</li>
+                <li>Stay organized throughout your professional development</li>
+                <li>Learn from application patterns and improve your approach</li>
+            </ul>
+            <div class="cta-buttons">
+                <a asp-controller="Applications" asp-action="Create" class="btn btn-primary">Get Started</a>
+                <a asp-controller="Data" asp-action="Visualizations" class="btn btn-secondary">Demo</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80"
+                 alt="Students collaborating on career planning"
+                 loading="lazy">
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="testimonials">
+    <div class="container">
+        <h2 class="section-title">What Students Are Saying</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <div class="student-info">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah J." class="student-photo">
+                    <div>
+                        <h3>Sarah J.</h3>
+                        <p>Computer Science Senior</p>
+                    </div>
+                </div>
+                <p class="quote">"This portal helped me organize 50+ applications and land 3 internship offers. The tracking system kept me sane during recruitment season!"</p>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="student-info">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael T." class="student-photo">
+                    <div>
+                        <h3>Michael T.</h3>
+                        <p>Business Junior</p>
+                    </div>
+                </div>
+                <p class="quote">"The visualization tools showed me I was applying too late in cycles. Adjusted my strategy and doubled my interview rate!"</p>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="student-info">
+                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Priya K." class="student-photo">
+                    <div>
+                        <h3>Priya K.</h3>
+                        <p>Engineering Graduate</p>
+                    </div>
+                </div>
+                <p class="quote">"From my first internship search to full-time job hunt, this system grew with me. The best career investment I made in college."</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="features">
+    <div class="container">
+        <h2 class="section-title">Key Features</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                    </svg>
+                </div>
+                <h3>Application Tracker</h3>
+                <p>Log every application with deadlines, status updates, and follow-up reminders.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.375 2.25c-1.035 0-1.875.84-1.875 1.875v15.75c0 1.035.84 1.875 1.875 1.875h.75c1.035 0 1.875-.84 1.875-1.875V4.125c0-1.036-.84-1.875-1.875-1.875h-.75zM9.75 8.625c0-1.036.84-1.875 1.875-1.875h.75c1.036 0 1.875.84 1.875 1.875v11.25c0 1.035-.84 1.875-1.875 1.875h-.75a1.875 1.875 0 01-1.875-1.875V8.625zM3 13.125c0-1.036.84-1.875 1.875-1.875h.75c1.036 0 1.875.84 1.875 1.875v6.75c0 1.035-.84 1.875-1.875 1.875h-.75A1.875 1.875 0 013 19.875v-6.75z" />
+                    </svg>
+                </div>
+                <h3>Progress Analytics</h3>
+                <p>Interactive dashboards show your application trends and success rates.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path fill-rule="evenodd" d="M4.804 21.644A6.707 6.707 0 006 21.75a6.721 6.721 0 003.583-1.029c.774.182 1.584.279 2.417.279 5.322 0 9.75-3.97 9.75-9 0-5.03-4.428-9-9.75-9s-9.75 3.97-9.75 9c0 2.409 1.025 4.587 2.674 6.192.232.226.277.428.254.543a3.73 3.73 0 01-.814 1.686.75.75 0 00.44 1.223zM8.25 10.875a1.125 1.125 0 100 2.25 1.125 1.125 0 000-2.25zM10.875 12a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0zm4.875-1.125a1.125 1.125 0 100 2.25 1.125 1.125 0 000-2.25z" clip-rule="evenodd" />
+                    </svg>
+                </div>
+                <h3>Interview Prep</h3>
+                <p>Document questions asked and your responses to improve over time.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Styles {
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Your existing CSS from project.css can go here */
+        .hero-section { /* ... */
+        }
+
+        .testimonials { /* ... */
+        }
+        /* Other styles ... */
+    </style>
+}
+
