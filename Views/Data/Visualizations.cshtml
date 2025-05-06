@@ -1,0 +1,141 @@
+@model careerPortal.Models.VisualizationViewModel
+@{
+    ViewData["Title"] = "Application Visualizations";
+    Layout = "_Layout";
+}
+
+<style>
+    .chart-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .chart-card {
+        flex: 1 1 45%;
+        max-width: 500px;
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+        .chart-card.full-width {
+            flex-basis: 100%;
+            max-width: 100%;
+        }
+
+    canvas {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+</style>
+
+<main class="container">
+    <h2>Visual Insights from Your Job Applications</h2>
+
+    <div class="chart-grid">
+        <div class="chart-card">
+            <h3>Status Distribution</h3>
+            <canvas id="statusChart"></canvas>
+        </div>
+
+        <div class="chart-card">
+            <h3>Applications by Location</h3>
+            <canvas id="locationChart"></canvas>
+        </div>
+
+        <div class="chart-card full-width">
+            <h3>Jobs by Agency (USAJobs API)</h3>
+            <canvas id="apiChart" style="max-height: 600px;"></canvas>
+        </div>
+    </div>
+</main>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const statusData = @Html.Raw(Json.Serialize(Model.StatusData));
+        const locationData = @Html.Raw(Json.Serialize(Model.LocationData));
+        const apiData = @Html.Raw(Json.Serialize(Model.ApiOrgData));
+
+        new Chart(document.getElementById('statusChart'), {
+            type: 'pie',
+            data: {
+                labels: Object.keys(statusData),
+                datasets: [{
+                    label: 'Applications',
+                    data: Object.values(statusData),
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true
+            }
+        });
+
+        new Chart(document.getElementById('locationChart'), {
+            type: 'bar',
+            data: {
+                labels: Object.keys(locationData),
+                datasets: [{
+                    label: 'Applications',
+                    data: Object.values(locationData),
+                    backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+
+        // API Chart with smart height cap
+        const apiCanvas = document.getElementById('apiChart');
+        const apiLabels = Object.keys(apiData);
+        const barHeight = 30;
+        const maxHeight = 600;
+        apiCanvas.height = Math.min(apiLabels.length * barHeight, maxHeight);
+
+        new Chart(apiCanvas, {
+            type: 'bar',
+            data: {
+                labels: apiLabels,
+                datasets: [{
+                    label: 'Open Jobs',
+                    data: Object.values(apiData),
+                    backgroundColor: 'rgba(255, 99, 132, 0.6)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'top' }
+                },
+                scales: {
+                    x: { beginAtZero: true },
+                    y: {
+                        ticks: {
+                            autoSkip: false,
+                            font: { size: 12 }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+}
