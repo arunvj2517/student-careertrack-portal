@@ -1,4 +1,13 @@
-﻿// Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿// Mobile Hamburger Menu Toggle Script
+document.addEventListener('DOMContentLoaded', function () {
+    const hamburger = document.querySelector('.hamburger-menu');
+    const headerNav = document.querySelector('.header-nav');
 
-// Write your JavaScript code.
+    if (hamburger && headerNav) {
+        hamburger.addEventListener('click', function () {
+            headerNav.classList.toggle('mobile-open');
+            this.setAttribute('aria-expanded',
+                this.getAttribute('aria-expanded') === 'true' ? 'false' : 'true');
+        });
+    }
+});
